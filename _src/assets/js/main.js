@@ -3,10 +3,12 @@
 const inputEl = document.querySelector('.searcher-input');
 const buttonEl = document.querySelector('.searcher-btn');
 const ulListEl = document.querySelector('.result-list');
+const ulFavEl = document.querySelector('.favorites-list');
 const urlSearch = 'http://api.tvmaze.com/search/shows?q=';
 
 //LISTENER
 buttonEl.addEventListener('click', handleButtonClick);
+ulListEl.addEventListener('focus', handleListFocus); //PENDIENTE
 
 //funcion para crear elementos
 const createEl = a => {return document.createElement(a);};
@@ -52,21 +54,23 @@ function handleButtonClick() {
       }
     });
 }
-//LOCAL STORAGE
-//Rastreo un evento sobre el documento (estoy pendiente de que se cargue la pagina)
-//document.onload = loadPage();
 
 //FAVORITE SHOWS
 
-// Una vez aparecen los resultados de búsqueda, podremos indicar cuáles son nuestras series favoritas.
-//Para ello, al hacer clic sobre un resultado el color de fondo y el de fuente se intercambian.
-//HANDLER LIST
-// function handleElementClick() {
-//   liEl.classList.toggle('fav');
-// }
+// Crear un listado (array) con las series favoritas que almacenamos en una variable.
+const favShows = [];
 
-//liEl.addEventListener('focus', handleElementClick);
-// Además, debes crear un listado (array) con las series favoritas que almacenamos en una variable.
-//const favShows = [];
+//Para ello, al hacer clic sobre un resultado el color de fondo y el de fuente se intercambian.
+function handleListFocus() {
+  //cuando selecciono un elemento se le agrega una clase fav
+  const favEl = titleEl.classList.add('fav');
+  //cuando tiene la clase fav, añado al elemento en favShows[]
+  favShows.push(favEl);
+}
+
 // Este listado lo mostraremos en la parte izquierda de la pantalla, debajo del formulario de búqueda.
 // Para terminar, si volvemos a realizar una nueva búsqueda, los favoritos se irán acumulando en nuestra lista.
+
+//LOCAL STORAGE
+//Rastreo un evento sobre el documento (estoy pendiente de que se cargue la pagina)
+//document.onload = loadPage();
