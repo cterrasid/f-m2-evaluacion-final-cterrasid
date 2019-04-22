@@ -16,7 +16,7 @@ const appendEl = (el, a) => {return el.appendChild(a);};
 const setAttr = (el, att, val) => {return el.setAttribute(att, val);};
 
 
-//HANDLER
+//HANDLER BUTTON
 function handleButtonClick() {
   //Establezco una condicion de 'vacio' inicial
   ulListEl.innerHTML = '';
@@ -27,20 +27,22 @@ function handleButtonClick() {
   fetch(urlResult)
     .then(response => response.json())
     .then(data => {
-    //bucle horrible
+      //bucle horrible
       for (let index = 0; index < data.length; index++) {
-        const imgUrl = data[index].show.image.medium;
         const title = data[index].show.name;
+        //Si existe imgUrl, muestra la medium, si no, la alternativa
+        let imgUrl = data[index].show.image;
         const imgUrlAlt = `https://via.placeholder.com/210x295/ffffff/666666/?text=${title}`;
+        (imgUrl) ? imgUrl = imgUrl.medium : imgUrl = imgUrlAlt;
         //creo li, img y title
         const liEl = createEl('li');
         const imgEl = createEl('img');
         const titleEl = createEl('h3');
         //añado el src y la url de la imagen
         if (imgUrl) {
-            setAttr(imgEl, 'src', imgUrl);
+          setAttr(imgEl, 'src', imgUrl);
         } else {
-            setAttr(imgEl, 'src', imgUrlAlt);            
+          setAttr(imgEl, 'src', imgUrlAlt);
         }
         //añado contenido dentro del titulo, li y ul
         titleEl.append(title);
@@ -48,17 +50,23 @@ function handleButtonClick() {
         appendEl(liEl, titleEl);
         appendEl(ulListEl,liEl);
       }
-
-
     });
-
 }
+//LOCAL STORAGE
+//Rastreo un evento sobre el documento (estoy pendiente de que se cargue la pagina)
+//document.onload = loadPage();
 
 //FAVORITE SHOWS
-// Una vez aparecen los resultados de búsqueda, podremos indicar cuáles son nuestras series
-// favoritas. Para ello, al hacer clic sobre un resultado el color de fondo y el de fuente se
-// intercambian.
+
+// Una vez aparecen los resultados de búsqueda, podremos indicar cuáles son nuestras series favoritas.
+//Para ello, al hacer clic sobre un resultado el color de fondo y el de fuente se intercambian.
+//HANDLER LIST
+// function handleElementClick() {
+//   liEl.classList.toggle('fav');
+// }
+
+//liEl.addEventListener('focus', handleElementClick);
 // Además, debes crear un listado (array) con las series favoritas que almacenamos en una variable.
+//const favShows = [];
 // Este listado lo mostraremos en la parte izquierda de la pantalla, debajo del formulario de búqueda.
-// Para terminar, si volvemos a realizar una nueva búsqueda, los favoritos se irán acumulando en
-// nuestra lista.
+// Para terminar, si volvemos a realizar una nueva búsqueda, los favoritos se irán acumulando en nuestra lista.
