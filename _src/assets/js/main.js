@@ -2,11 +2,14 @@
 
 const inputEl = document.querySelector('.searcher-input');
 const buttonEl = document.querySelector('.searcher-btn');
+const ulListEl = document.querySelector('.result-list');
 const urlSearch = 'http://api.tvmaze.com/search/shows?q=';
 
 buttonEl.addEventListener('click', handleButtonClick);
 
 function handleButtonClick() {
+    //Establezco una condicion de 'vacio'
+    ulListEl.innerHTML = '';
   //Al hacer click el valor del input se incorpora a la url
   const inputValue = inputEl.value;
   const urlResult = urlSearch + inputValue;
@@ -19,13 +22,16 @@ function handleButtonClick() {
         // const infoResult = data[index];
         let imgUrl = data[index].show.image.medium;
         let title = data[index].show.name;
-        let ulListEl = document.querySelector('.result-list');
         //creo un li en cada iteracion
         const liEl = document.createElement('li');
         //creo un img en cada iteracion
         const imgEl = document.createElement('img');
+        //añado el src y la url de la imagen
+        imgEl.setAttribute('src', imgUrl);
         //creo un titulo en cada iteracion
         const titleEl = document.createElement('h3');
+        //añado contenido dentro del titulo
+        titleEl.append(title);
         //meto el img en el li
         liEl.appendChild(imgEl);
         //meto el titulo en el li
