@@ -29,35 +29,24 @@ function handleButtonClick() {
     .then(data => {
     //bucle horrible
       for (let index = 0; index < data.length; index++) {
-        let imgUrl = data[index].show.image.medium;
-        let title = data[index].show.name;
+        const imgUrl = data[index].show.image.medium;
+        const title = data[index].show.name;
         const imgUrlAlt = `https://via.placeholder.com/210x295/ffffff/666666/?text=${title}`;
-        //creo un li en cada iteracion
-        //const liEl = document.createElement('li');
+        //creo li, img y title
         const liEl = createEl('li');
         const imgEl = createEl('img');
         const titleEl = createEl('h3');
-        //creo un img en cada iteracion
-        //const imgEl = document.createElement('img');
         //añado el src y la url de la imagen
-        if (imgUrl) {setAttr(imgEl, 'src', imgUrl);
-          //imgEl.setAttribute('src', imgUrl);
-        } else {setAttr(imgEl, 'src', imgUrlAlt);
-          //imgEl.setAttribute('src', imgUrlAlt);            
+        if (imgUrl) {
+            setAttr(imgEl, 'src', imgUrl);
+        } else {
+            setAttr(imgEl, 'src', imgUrlAlt);            
         }
-        //creo un titulo en cada iteracion
-        //const titleEl = document.createElement('h3');
-        //añado contenido dentro del titulo
+        //añado contenido dentro del titulo, li y ul
         titleEl.append(title);
         appendEl(liEl, imgEl);
         appendEl(liEl, titleEl);
         appendEl(ulListEl,liEl);
-        //meto el img en el li
-        //liEl.appendChild(imgEl);
-        //meto el titulo en el li
-        //liEl.appendChild(titleEl);
-        //meto el li en ul
-        //ulListEl.appendChild(liEl);
       }
 
 
