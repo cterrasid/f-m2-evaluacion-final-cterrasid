@@ -49,8 +49,6 @@ function handleButtonClick() {
         } else {
           setAttr(imgEl, 'src', imgUrlAlt);
         }
-        //añado una clase a los li
-        liEl.classList.add('list-result');
         //añado contenido dentro del titulo, li y ul
         titleEl.append(title);
         appendEl(liEl, imgEl);
@@ -66,10 +64,11 @@ function handleButtonClick() {
 
 //handler sobre los list
 function handleListClick() {
-//cuando hago click
-//creo una copia de lo que tengo en LiEl(this)
+  //cuando hago click
+  //añado una clase a los li
+  (this.click) ? this.classList.add('fav') : this.classList.remove('fav');
+  //creo una copia de lo que tengo en LiEl(this)
   let copyLiEl = this.cloneNode(true);
-  //ES AQUI DONDE EMPIEZA EL LIO DE LA CLASE :(
   //meto el copyliEl(this) en la lista de favoritos
   ulFavEl.append(copyLiEl);//ulFavEl.append(this);
   //añado la clase .fav a li
