@@ -13,5 +13,38 @@
     //grid-area: btn;
     @include button;
     margin: 0 0 20px 0;
+}
 
+.fav{
+    display: flex;
+    @include flexAlignment(center, center, column);
+    border: 3px solid white;
+    background-color: black;
+    color: white;
+    padding: 10px 10px 20px 10px;
+    margin: 10px;
+    width: 175px;
+    @include typography($fontContent, $defaultFontSize, $fontWeightM); 
+
+}
+
+li{
+    display: flex;
+    @include flexAlignment(center, center, column);
+    border: 3px solid black;
+    padding: 10px 10px 20px 10px;
+    margin: 10px;
+    width: 175px;
+    @include typography($fontContent, $defaultFontSize, $fontWeightM); 
+}
+
+img{
+    @include boxSize(210px, unset);
+    // border: 1px solid black;
+    // box-shadow: 10px 10px 23px -12px rgba(0,0,0,0.53);
+}
+
+//OTRO LADO
+.favorites-list{
+    background-color: pink;
 }

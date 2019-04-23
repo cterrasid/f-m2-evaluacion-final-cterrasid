@@ -2,12 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style: none;
 }
 
 body{
     @include gridContainer(grid, unset, unset, unset);
     @include gridBoxAlignment(center, center);
-    height: 100vh;
+    @include boxSize(100vh, unset);
     font-family: $fontContent;
     font-size: $defaultFontSize;
 }

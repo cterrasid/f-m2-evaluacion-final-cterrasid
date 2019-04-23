@@ -2,13 +2,15 @@
 
 const inputEl = document.querySelector('.searcher-input');
 const buttonEl = document.querySelector('.searcher-btn');
+
 const ulListEl = document.querySelector('.result-list');
 const ulFavEl = document.querySelector('.favorites-list');
 const urlSearch = 'http://api.tvmaze.com/search/shows?q=';
 
+let favShows = [];
+
 //LISTENER
 buttonEl.addEventListener('click', handleButtonClick);
-ulListEl.addEventListener('focus', handleListFocus); //PENDIENTE
 
 //funcion para crear elementos
 const createEl = a => {return document.createElement(a);};
@@ -46,32 +48,46 @@ function handleButtonClick() {
         } else {
           setAttr(imgEl, 'src', imgUrlAlt);
         }
+        //añado una clase a los li
+        liEl.classList.add('list-result');
         //añado contenido dentro del titulo, li y ul
         titleEl.append(title);
         appendEl(liEl, imgEl);
         appendEl(liEl, titleEl);
         appendEl(ulListEl,liEl);
+
+        //PUEDO LLAMAR ELEMENTOS DESDE AFUERA CON UN LISTENER ADENTRO
+        liEl.addEventListener('click', handleListClick);
       }
+
     });
-  handleListFocus();
 }
 
-//FAVORITE SHOWS
+//handler sobre los list
+function handleListClick() {
+//cuando hago click
+//creo una copia de lo que tengo en LiEl(this)
+const copyLiEl = this.cloneNode(true);
+//meto el copyliEl(this) en la lista de favoritos
+  ulFavEl.append(copyLiEl);  
+  //ulFavEl.append(this);
+  //tambien meto su contenido en el array favShows
+  favShows.push(this.innerHTML);
+  //meto los elementos dentro del LS
+  localStorage.setItem('fav', JSON.stringify(favShows));
+  //añado la clase .fav a li
+//   if (ulFavEl.append(this)) {
+//     this.classList.add('fav');
+//   }
+const ulFavValue = ulFavEl.innerHTML;
+console.log(ulFavValue);
+const liFav = ulFavValue.querySelectorAll('li');
+console.log(liFav);
 
-// Crear un listado (array) con las series favoritas que almacenamos en una variable.
-let favShows = [];
 
-//Para ello, al hacer clic sobre un resultado el color de fondo y el de fuente se intercambian.
-function handleListFocus() {
-  //cuando selecciono un elemento se le agrega una clase fav
-  const favEl = titleEl.classList.add('fav');
-  //cuando tiene la clase fav, añado al elemento en favShows[]
-  favShows.push(favEl);
+
+  //le quito el evento para que no se agregue 453468 veces
+  this.removeEventListener('click', handleListClick);
+  copyLiEl.removeEventListener('click', handleListClick);
+
 }
-
-// Este listado lo mostraremos en la parte izquierda de la pantalla, debajo del formulario de búqueda.
-// Para terminar, si volvemos a realizar una nueva búsqueda, los favoritos se irán acumulando en nuestra lista.
-
-//LOCAL STORAGE
-//Rastreo un evento sobre el documento (estoy pendiente de que se cargue la pagina)
-//document.onload = loadPage();

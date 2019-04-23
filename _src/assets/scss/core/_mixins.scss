@@ -10,6 +10,12 @@
     align-items: $align-items;
 }
 
+@mixin flexAlignment($justify-content, $align-items, $flex-direction) {
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $flex-direction;
+}
+
 @mixin typography($font-family, $font-size, $font-weight){
     font-family: $font-family;
     font-size: $font-size;
