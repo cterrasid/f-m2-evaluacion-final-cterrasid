@@ -34,7 +34,7 @@ function handleButtonClick() {
         const title = data[index].show.name;
         //Si existe imgUrl, muestra la medium, si no, la alternativa
         let imgUrl = data[index].show.image;
-        const imgUrlAlt = `https://via.placeholder.com/210x295/ffffff/666666/?text=${title}`;
+        const imgUrlAlt = `https://via.placeholder.com/210x295/afeeee/888888/?text=${title}`;
         (imgUrl) ? imgUrl = imgUrl.medium : imgUrl = imgUrlAlt;
         //creo li, img y title
         const liEl = createEl('li');
@@ -53,12 +53,13 @@ function handleButtonClick() {
         appendEl(ulListEl,liEl);
       }
     });
+  handleListFocus();
 }
 
 //FAVORITE SHOWS
 
 // Crear un listado (array) con las series favoritas que almacenamos en una variable.
-const favShows = [];
+let favShows = [];
 
 //Para ello, al hacer clic sobre un resultado el color de fondo y el de fuente se intercambian.
 function handleListFocus() {

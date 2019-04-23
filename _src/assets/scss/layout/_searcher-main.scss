@@ -1,0 +1,17 @@
+.main-title{
+    //grid-area: title;
+    text-align: center;
+    @include typography($fontTitle, $fontSizeS, unset);
+}
+
+.searcher-input{
+    @include input;
+    margin: 20px 0 20px 0;
+}
+
+.searcher-btn{
+    //grid-area: btn;
+    @include button;
+    margin: 0 0 20px 0;
+
+}

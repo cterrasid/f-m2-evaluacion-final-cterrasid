@@ -5,8 +5,9 @@
 }
 
 body{
+    @include gridContainer(grid, unset, unset, unset);
+    @include gridBoxAlignment(center, center);
     height: 100vh;
-    background-color: white;
     font-family: $fontContent;
     font-size: $defaultFontSize;
 }
