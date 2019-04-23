@@ -1,5 +1,5 @@
 'use strict';
-
+//VARIABLES
 const inputEl = document.querySelector('.searcher-input');
 const buttonEl = document.querySelector('.searcher-btn');
 
@@ -12,13 +12,13 @@ let favShows = [];
 
 // loadPage();
 
-buttonEl.addEventListener('click', handleButtonClick);
-
-
+//SUPPORT FUNCTIONS
 const createEl = a => { return document.createElement(a); };
 const appendEl = (el, a) => { return el.appendChild(a); };
 const setAttr = (el, att, val) => { return el.setAttribute(att, val); };
 
+//EVENT: REQUEST - CLICK
+buttonEl.addEventListener('click', handleButtonClick);
 function handleButtonClick() {
   ulListEl.innerHTML = '';
   const inputValue = inputEl.value;
@@ -51,7 +51,9 @@ function handleButtonClick() {
     });
 }
 
+//FAVOUTITE SHOWS
 function handleListClick() {
+
   (this.click) ? this.classList.add('fav') : this.classList.remove('fav');
 
   let copyLiEl = this.cloneNode(true);

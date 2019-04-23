@@ -1,3 +1,15 @@
+@mixin gridContainer($display, $gridTempCol, $gridTempRw, $gridTempAr) {
+    display: $display;
+    grid-template-columns: $gridTempCol;
+    grid-template-rows: $gridTempRw;
+    grid-template-areas: $gridTempAr;
+}
+
+@mixin gridBoxAlignment($justify-items, $align-items) {
+    justify-items: $justify-items;
+    align-items: $align-items;
+}
+
 @mixin flexAlignment($justify-content, $align-items, $flex-direction) {
     justify-content: $justify-content;
     align-items: $align-items;
@@ -16,8 +28,9 @@
 }
 
 @mixin input {
-    height: 30px;
-    width: 1000px;
+    @include boxSize(30px, 200px);
+    grid-area: input;
+    display: inline-block;
     background-color: #fff;
     border-bottom: 3px solid black !important;
     border: none;
@@ -28,8 +41,9 @@
 }
 
 @mixin button {
-    display: block;
-    height: 25px;
+    grid-area: btn;
+    display: inline-block;
+    height: 30px;
     width: 70px;
     background-color: #fff;
     border-bottom: 3px solid black !important;
@@ -37,4 +51,5 @@
     font-size: $fontSizeM;
     font-family: $fontAlternative;
     text-align: center;
+    margin: 20px 0 20px 0;
 }
