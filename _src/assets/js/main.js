@@ -14,11 +14,11 @@ let favShows = [];
 buttonEl.addEventListener('click', handleButtonClick);
 
 //funcion para crear elementos
-const createEl = a => {return document.createElement(a);};
+const createEl = a => { return document.createElement(a); };
 //funcion para crear elementos
-const appendEl = (el, a) => {return el.appendChild(a);};
+const appendEl = (el, a) => { return el.appendChild(a); };
 //funcion para añadir atributos
-const setAttr = (el, att, val) => {return el.setAttribute(att, val);};
+const setAttr = (el, att, val) => { return el.setAttribute(att, val); };
 
 
 //HANDLER BUTTON
@@ -53,7 +53,7 @@ function handleButtonClick() {
         titleEl.append(title);
         appendEl(liEl, imgEl);
         appendEl(liEl, titleEl);
-        appendEl(ulListEl,liEl);
+        appendEl(ulListEl, liEl);
 
         //PUEDO LLAMAR ELEMENTOS DESDE AFUERA CON UN LISTENER ADENTRO
         liEl.addEventListener('click', handleListClick);

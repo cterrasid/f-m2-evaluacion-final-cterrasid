@@ -1,5 +1,4 @@
 .main-title{
-    //grid-area: title;
     text-align: center;
     @include typography($fontTitle, $fontSizeS, unset);
 }
@@ -10,7 +9,6 @@
 }
 
 .searcher-btn{
-    //grid-area: btn;
     @include button;
     margin: 0 0 20px 0;
 }
@@ -40,11 +38,9 @@ li{
 
 img{
     @include boxSize(210px, unset);
-    // border: 1px solid black;
-    // box-shadow: 10px 10px 23px -12px rgba(0,0,0,0.53);
+    border-radius: 15px;
 }
 
-//OTRO LADO
 .favorites-list{
     background-color: pink;
 }
