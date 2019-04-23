@@ -17,12 +17,14 @@
 
 @mixin input {
     height: 30px;
+    width: 1000px;
     background-color: #fff;
     border-bottom: 3px solid black !important;
     border: none;
     font-size: $fontSizeL;
     font-family: $fontContent;
     text-align: center;
+    margin: 20px 0 20px 0;
 }
 
 @mixin button {
