@@ -28,18 +28,22 @@ function handleButtonClick() {
     .then(response => response.json())
     .then(data => {
       for (let index = 0; index < data.length; index++) {
+
         const title = data[index].show.name;
         let imgUrl = data[index].show.image;
-        const imgUrlAlt = `https://via.placeholder.com/210x295/afeeee/888888/?text=${title}`;
+        const imgUrlAlt = `https://via.placeholder.com/210x295/ffffff/888888/?text=${title}`;
         (imgUrl) ? imgUrl = imgUrl.medium : imgUrl = imgUrlAlt;
+
         const liEl = createEl('li');
         const imgEl = createEl('img');
         const titleEl = createEl('h3');
+        
         if (imgUrl) {
           setAttr(imgEl, 'src', imgUrl);
         } else {
           setAttr(imgEl, 'src', imgUrlAlt);
         }
+        liEl.classList.add('list-result');
         titleEl.append(title);
         appendEl(liEl, imgEl);
         appendEl(liEl, titleEl);
@@ -54,7 +58,7 @@ function handleButtonClick() {
 //FAVOUTITE SHOWS
 function handleListClick() {
 
-  (this.click) ? this.classList.add('fav') : this.classList.remove('fav');
+  //(this.click) ? this.classList.add('fav') : this.classList.remove('fav');
 
   let copyLiEl = this.cloneNode(true);
   ulFavEl.append(copyLiEl);

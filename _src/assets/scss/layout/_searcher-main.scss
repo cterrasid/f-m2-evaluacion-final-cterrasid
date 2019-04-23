@@ -26,50 +26,64 @@
     @include input;
 }
 
+.searcher-input::placeholder {
+    color: rgba(105, 105, 105, 0.548);
+}
+
 .searcher-btn{
     @include button;
 }
 
 .fav{
     display: flex;
-    @include flexAlignment(center, center, column);
-    @include boxSize(190px, 120px);
-    border: 3px solid white;
-    background-color: black;
-    color: white;
-    padding: 10px 10px 20px 10px;
-    margin: 10px;
-    @include typography($fontContent, $defaultFontSize, $fontWeightM); 
-    
+    @include flexAlignment(center, center, row);
+    @include typography($fontContent, 12px, $fontWeightS);
+    text-align: start;
+       
+    img{
+        width: 50px;
+        background-color: white;
+        border-radius: 2px;
+        box-shadow: 0 2px 25px 2px rgba(128, 128, 128, 0.747);
+        background-position: center center;
+        background-size: cover;
+        overflow: hidden;
+        margin: 5px;
+        cursor: pointer;    
+    }
 }
 
-li{
+.list-result{
     display: flex;
     @include flexAlignment(center, center, column);
     @include boxSize(190px, 120px);
-    border: 3px solid black;
-    padding: 10px 10px 20px 10px;
-    margin: 10px;
-    @include typography($fontContent, 12px, $fontWeightM); 
+    @include typography($fontContent, 12px, normal);
+    text-align: start;
+
 }
 
 img{
-    @include boxSize(140px, unset);
-    border-radius: 2px;
+    width: 100px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 25px 2px rgba(128, 128, 128, 0.747);
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+    cursor: pointer;    
 }
 
 .result-list{
     grid-area: result;
     display: flex;
     flex-wrap: wrap;
-    @include flexAlignment(center, start, row);
+    @include flexAlignment(start, start, row);
 
 }
 
 .favorites-list{
     grid-area: favorite;
-    background-color: pink;
     display: flex;
     flex-wrap: wrap;
-    @include flexAlignment(center, start, row);
+    @include flexAlignment(start, start, row);
 }
