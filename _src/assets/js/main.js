@@ -5,6 +5,7 @@ const buttonEl = document.querySelector('.searcher-btn');
 
 const ulListEl = document.querySelector('.result-list');
 const ulFavEl = document.querySelector('.favorites-list');
+
 const urlSearch = 'http://api.tvmaze.com/search/shows?q=';
 
 let favShows = [];
@@ -67,27 +68,19 @@ function handleButtonClick() {
 function handleListClick() {
 //cuando hago click
 //creo una copia de lo que tengo en LiEl(this)
-const copyLiEl = this.cloneNode(true);
-//meto el copyliEl(this) en la lista de favoritos
-  ulFavEl.append(copyLiEl);  
-  //ulFavEl.append(this);
+  let copyLiEl = this.cloneNode(true);
+  //ES AQUI DONDE EMPIEZA EL LIO DE LA CLASE :(
+  //meto el copyliEl(this) en la lista de favoritos
+  ulFavEl.append(copyLiEl);//ulFavEl.append(this);
+  //añado la clase .fav a li
+  setAttr(copyLiEl, 'class', 'fav');
   //tambien meto su contenido en el array favShows
   favShows.push(this.innerHTML);
   //meto los elementos dentro del LS
   localStorage.setItem('fav', JSON.stringify(favShows));
-  //añado la clase .fav a li
-//   if (ulFavEl.append(this)) {
-//     this.classList.add('fav');
-//   }
-const ulFavValue = ulFavEl.innerHTML;
-console.log(ulFavValue);
-const liFav = ulFavValue.querySelectorAll('li');
-console.log(liFav);
-
-
-
   //le quito el evento para que no se agregue 453468 veces
   this.removeEventListener('click', handleListClick);
+  //ni se quite, jeje
   copyLiEl.removeEventListener('click', handleListClick);
 
 }
