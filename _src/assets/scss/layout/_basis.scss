@@ -6,8 +6,6 @@
 }
 
 body{
-    @include gridContainer(grid, unset, unset, unset);
-    @include gridBoxAlignment(center, center);
     @include boxSize(100vh, unset);
     font-family: $fontContent;
     font-size: $defaultFontSize;
