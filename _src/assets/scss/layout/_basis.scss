@@ -1,0 +1,12 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background-color: white;
+    font-family: $fontContent;
+    font-size: $defaultFontSize;
+}
