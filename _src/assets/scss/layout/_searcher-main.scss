@@ -53,6 +53,10 @@
     }
 }
 
+.hidden{
+    display: none;
+}
+
 .list-result{
     display: flex;
     @include flexAlignment(center, center, column);

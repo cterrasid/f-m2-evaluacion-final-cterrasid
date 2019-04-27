@@ -55,21 +55,23 @@ function handleButtonClick() {
     });
 }
 
-//FAVOUTITE SHOWS
+//FAVOURITE SHOWS
 function handleListClick() {
 
-  //(this.click) ? this.classList.add('fav') : this.classList.remove('fav');
-
+  
   let copyLiEl = this.cloneNode(true);
   ulFavEl.append(copyLiEl);
-  setAttr(copyLiEl, 'class', 'fav');
-
-  favShows.push(this.innerHTML);
+  //setAttr(copyLiEl, 'class', 'fav');
+  copyLiEl.classList.add('fav');
+  copyLiEl.classList.remove('list-result');
+  
+  
+  favShows.push(copyLiEl.innerHTML);
   localStorage.setItem('favorite', JSON.stringify(favShows));
-
+  
   this.removeEventListener('click', handleListClick);
-  copyLiEl.removeEventListener('click', handleListClick);
-
+  //copyLiEl.removeEventListener('click', handleListClick);
+  
 }
 
 // function loadPage() {
