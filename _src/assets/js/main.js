@@ -9,13 +9,13 @@ const ulFavEl = document.querySelector('.favorites-list');
 const urlSearch = 'http://api.tvmaze.com/search/shows?q=';
 
 let favShows = [];
-
-// loadPage();
-
+handleLoadPage();
 //SUPPORT FUNCTIONS
+//createElemente, appendChild, set Attibute, classList
 const createEl = a => { return document.createElement(a); };
 const appendEl = (el, a) => { return el.appendChild(a); };
 const setAttr = (el, att, val) => { return el.setAttribute(att, val); };
+const addRemoveClass = (classA, classB, el) => { el.classList.add(classA); el.classList.remove(classB); };
 
 //EVENT: REQUEST - CLICK
 buttonEl.addEventListener('click', handleButtonClick);
@@ -37,7 +37,7 @@ function handleButtonClick() {
         const liEl = createEl('li');
         const imgEl = createEl('img');
         const titleEl = createEl('h3');
-        
+
         if (imgUrl) {
           setAttr(imgEl, 'src', imgUrl);
         } else {
@@ -51,32 +51,33 @@ function handleButtonClick() {
 
         liEl.addEventListener('click', handleListClick);
       }
-
+      
     });
-}
-
+  }
+  
 //FAVOURITE SHOWS
 function handleListClick() {
 
-  
+
   let copyLiEl = this.cloneNode(true);
   ulFavEl.append(copyLiEl);
-  //setAttr(copyLiEl, 'class', 'fav');
-  copyLiEl.classList.add('fav');
-  copyLiEl.classList.remove('list-result');
-  
-  
+  const favEl = addRemoveClass('fav', 'list-result', copyLiEl);
+
+
   favShows.push(copyLiEl.innerHTML);
   localStorage.setItem('favorite', JSON.stringify(favShows));
-  
+
   this.removeEventListener('click', handleListClick);
-  //copyLiEl.removeEventListener('click', handleListClick);
-  
 }
 
-// function loadPage() {
-//     if (favShows !== []) {
-//         const cacheEl = localStorage.getItem('favorite');
-//         favShows.push(cacheEl);
-//     }
-// }
+//cada vez que cargue la pagina
+function handleLoadPage() {
+  const cache = JSON.parse(localStorage.getItem('favorite'));
+  const cacheConcat = favShows.concat(cache);
+  const newCache = favShows.push(cacheConcat);
+  for (let index = 0; index < newCache.length; index++) {
+    createEl('p'); 
+  }
+  console.log(newCache);
+}
+document.addEventListener('load', handleLoadPage);
