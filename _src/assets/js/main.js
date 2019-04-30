@@ -9,7 +9,7 @@ const ulFavEl = document.querySelector('.favorites-list');
 const urlSearch = 'http://api.tvmaze.com/search/shows?q=';
 
 let favShows = [];
-handleLoadPage();
+//handleLoadPage();
 //SUPPORT FUNCTIONS
 //createElemente, appendChild, set Attibute, classList
 const createEl = a => { return document.createElement(a); };
@@ -57,13 +57,14 @@ function handleButtonClick() {
   
 //FAVOURITE SHOWS
 function handleListClick() {
-
-
+//genero una copia de mis <li> (liEl)
   let copyLiEl = this.cloneNode(true);
+  //Meto mi copia en la lista de favoritos (ulFavEl)
   ulFavEl.append(copyLiEl);
-  const favEl = addRemoveClass('fav', 'list-result', copyLiEl);
+  //Añado clase fav y remuevo list-result
+  addRemoveClass('fav', 'list-result', copyLiEl);
 
-
+//meto 
   favShows.push(copyLiEl.innerHTML);
   localStorage.setItem('favorite', JSON.stringify(favShows));
 
@@ -75,9 +76,9 @@ function handleLoadPage() {
   const cache = JSON.parse(localStorage.getItem('favorite'));
   const cacheConcat = favShows.concat(cache);
   const newCache = favShows.push(cacheConcat);
-  for (let index = 0; index < newCache.length; index++) {
-    createEl('p'); 
-  }
+  // for (let index = 0; index < newCache.length; index++) {
+  //   createEl('p'); 
+  // }
   console.log(newCache);
 }
-document.addEventListener('load', handleLoadPage);
+window.addEventListener('load', handleLoadPage);
